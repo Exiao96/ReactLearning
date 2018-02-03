@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="../library/react.js"></script>
+    <script src="../library/react-dom.js"></script>
+    <script src="../library/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="JSX"></div>
+    <div id="JSX2"></div>
+    <script type="text/babel">
+    function formaName(user){                                    
+       return user.firstName+' '+user.lastName;               
+    }
+
+    function getGreeting(user){                                   //JSX可作为返回值
+       if(user){
+          return <h1>Hello,{formaName(user)}!</h1>;
+       }
+       return <h1 style={style}>Hello Stranger!</h1>              //修改颜色：通过JSX修改属性
+    }
+    
+    var style={color:"red"};
+    
+    const HP={
+       firstName:'Harper',
+       lastName:'Perez'
+    };
+
+    const element=(                                               //html代码外添加小括号防止;错误
+         <h1>Hello,{formaName(HP)}!</h1>                          //大括号内任意使用JS表达式
+    );     
+
+    const element2=(
+        getGreeting(null)
+    );
+
+    ReactDOM.render(
+       element,
+       document.getElementById('JSX')
+    );
+
+    ReactDOM.render(
+       element2,
+       document.getElementById('JSX2')
+    );
+
+
+    </script>
+  </body>
+</html>
